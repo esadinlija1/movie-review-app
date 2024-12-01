@@ -6,7 +6,7 @@ export default function MovieDetails() {
   // useEffect koji poziva fetch request sa idom i lista informacije
   return (
     <div className="movie-details">
-      This is details page for a movie with the id:{id}
+      This is details page for a movie with {id}
     </div>
   );
 }
