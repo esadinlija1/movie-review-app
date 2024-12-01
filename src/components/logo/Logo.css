@@ -1,0 +1,7 @@
+.logo h1{
+    display: inline-block;
+    background:linear-gradient(to left,#C9E6F0,#78B3CE);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}

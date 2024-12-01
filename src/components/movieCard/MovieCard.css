@@ -1,0 +1,43 @@
+.card-container {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+    background-color:#262626;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ 
+.poster {
+    width: 100%;
+    height:auto;
+}
+
+.basic-info {
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: linear-gradient(to top, #000 50%  , rgba(0,0,0,.2) , transparent);
+   padding: 2em 1em;
+  
+}
+
+.basic-info p{
+    color: #fff;
+    font-size: 1.4em;
+}
+
+.basic-info .stats{
+    display:flex;
+    flex-direction:column;
+    gap:.5em;
+    color:white;
+}
+
+.basic-info .stats .stat{
+    display:flex;
+    gap:.5em;
+}

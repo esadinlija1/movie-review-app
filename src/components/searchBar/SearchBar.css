@@ -1,0 +1,40 @@
+.search-container {
+    max-width: 400px;
+    width: 100%;
+    position:relative;
+
+  }
+
+  .search-container .icon-holder{
+    position:absolute;
+    left:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:40px;
+  }
+
+  .search-container .icon-holder img{
+    width: 1em;
+  }
+  
+  .search-container input {
+    width: 100%;
+    background: #f1f1f1;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    padding-left:40px;
+    transition: 300ms;
+  }
+
+  .search-container input:focus {
+    border: 2px solid black;
+  }
+  
+  

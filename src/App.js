@@ -1,41 +1,41 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import './App.css';
-import SearchBar from './components/SearchBar';
-import MoviesList from './components/MoviesList';
-import MovieDetails from './components/MovieDetails';
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { BASE_URL } from "./constants";
+import "./App.css";
+import MoviesList from "./components/movieList/MoviesList";
+import MovieDetails from "./components/movieDetails/MovieDetails";
+import Layout from "./components/layout/Layout";
 
+const App = () => {
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
 
-const App = () =>{
+  const apiKey = process.env.REACT_APP_API_KEY;
+  console.log(apiKey, "key");
 
-  const [query,setQuery]=useState("");
-  const [movies,setMovies]=useState([]);
-  
-
-  useEffect( () =>{
-    const fetchData=  async ()=>{
-      const api_key='43074828169f778e78b380ceae0f014d';
-      const URL= query ? 
-      `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`:
-      `https://api.themoviedb.org/3/movie/popular?api_key=43074828169f778e78b380ceae0f014d`;
+  useEffect(() => {
+    const fetchData = async () => {
+      const URL = query
+        ? `${BASE_URL}/search/movie?api_key=${apiKey}&query=${query}`
+        : `${BASE_URL}/movie/popular?api_key=${apiKey}`;
       const result = await fetch(URL);
-      result.json().then(json=>{
+      result.json().then((json) => {
         setMovies(json.results);
-      })
-    } 
+        console.log(json.results);
+      });
+    };
     fetchData();
-  },[query])
+  }, [query]);
 
-  
-
-    return(
-        <div className="app">
-          <h1>Moviempire</h1>
-          <SearchBar query={query} onChangeQuery={setQuery}  />
-          <MoviesList movies={movies}/>
-        </div>
-    );
-}
+  return (
+    <Routes>
+      <Route element={<Layout onChangeQuery={setQuery} />}>
+        <Route path="/" element={<MoviesList movies={movies} />} />
+        <Route path="movie/:id" element={<MovieDetails />} />
+      </Route>
+      <Route path="*" element={<h2>404 page not found</h2>} />
+    </Routes>
+  );
+};
 
 export default App;
